@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="ProductMapper">
+
+	<resultMap id="result" type="com.zbuske.productservicepoc.model.Product">
+		<result property="id" column="ID" />
+		<result property="sku" column="SKU" />
+		<result property="name" column="NAME" />
+		<result property="category" column="CATEGORY" />
+		<result property="price" column="PRICE" />
+		<result property="lastUpdated" column="LAST_UPDATED" />
+	</resultMap>
+
+	<select id="getById" resultType="com.zbuske.productservicepoc.model.Product">
+		select ID as id,
+		SKU as sku,
+		NAME
+		as name,
+		CATEGORY as category,
+		PRICE as price,
+		LAST_UPDATED as
+		lastUpdated
+		from PRODUCT where
+		id = #{id}
+	</select>
+
+	<update id="createTable">
+		CREATE TABLE PRODUCT (ID INT PRIMARY KEY,
+		SKU
+		VARCHAR(50),
+		NAME VARCHAR(100),
+		CATEGORY VARCHAR(50),
+		PRICE FLOAT,
+		LAST_UPDATED DATE)
+	</update>
+
+	<update id="dropTable">
+		DROP TABLE PRODUCT
+	</update>
+
+
+	<insert id="insert" parameterType="com.zbuske.productservicepoc.model.Product">
+		INSERT INTO PRODUCT (ID, SKU,
+		NAME, CATEGORY, PRICE, LAST_UPDATED)
+		VALUES (#{id}, #{sku}, #{name},
+		#{category}, #{price}, #{lastUpdated})
+	</insert>
+</mapper>
+
