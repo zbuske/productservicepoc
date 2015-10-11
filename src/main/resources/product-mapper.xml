@@ -14,16 +14,27 @@
 	</resultMap>
 
 	<select id="getById" resultType="com.zbuske.productservicepoc.model.Product">
-		select ID as id,
-		SKU as sku,
-		NAME
-		as name,
-		CATEGORY as category,
-		PRICE as price,
-		LAST_UPDATED as
-		lastUpdated
+		select *
 		from PRODUCT where
-		id = #{id}
+		id =
+		#{id}
+	</select>
+
+	<select id="getByCategory" resultType="com.zbuske.productservicepoc.model.Product">
+		select *
+		from PRODUCT where
+		category =
+		#{category}
+	</select>
+
+	<select id="getByIds" resultType="com.zbuske.productservicepoc.model.Product">
+		select *
+		from PRODUCT where
+		id in
+		<foreach item="id" index="index" collection="array" open="("
+			separator="," close=")">
+			#{array}
+		</foreach>
 	</select>
 
 	<update id="createTable">

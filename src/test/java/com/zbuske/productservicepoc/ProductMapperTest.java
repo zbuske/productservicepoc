@@ -5,6 +5,7 @@ import static org.junit.Assert.assertEquals;
 import java.io.IOException;
 import java.io.InputStream;
 import java.sql.Date;
+import java.util.List;
 
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
@@ -55,6 +56,22 @@ public class ProductMapperTest {
 
 		assertEquals(productId, product.getId());
 	}
+	@Test
+	public void testGetByCategory() {
+		String category = "toys";
+		List<Object> products = session.selectList("ProductMapper.getByCategory", category);
+
+		assertEquals(2, products.size());
+	}
+
+	
+	public void testGetByIds() {
+		String[] productIds = {"5555","5543"};
+		List products= (List) session.selectList("ProductMapper.getByIds", productIds);
+
+		assertEquals(2, products.size());
+	}
+
 	
 	@After
 	public void tearDown() {

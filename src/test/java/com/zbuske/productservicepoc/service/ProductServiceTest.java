@@ -1,20 +1,17 @@
 package com.zbuske.productservicepoc.service;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
-import javax.ws.rs.client.Invocation;
-import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.MediaType;
 
-import org.junit.Assert;
+import org.junit.Ignore;
 import org.junit.Test;
 
-import com.zbuske.productservicepoc.model.Product;
-
 public class ProductServiceTest {
-
+	//This will only run if the Jetty server is running
+	@Ignore
 	@Test
 	public void testById() throws Exception{
 		Client client = ClientBuilder.newClient();

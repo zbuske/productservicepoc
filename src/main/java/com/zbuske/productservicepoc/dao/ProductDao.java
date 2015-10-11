@@ -1,5 +1,7 @@
 package com.zbuske.productservicepoc.dao;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
@@ -18,6 +20,18 @@ public class ProductDao {
 
 		try {
 			Product product = (Product) session.selectOne("ProductMapper.getById", id);
+			return product;
+		} finally {
+			session.close();
+		}
+	}
+
+	public List<Product> selectByCategory(String category) {
+
+		SqlSession session = sqlSessionFactory.openSession();
+
+		try {
+			List<Product> product = session.selectList("ProductMapper.getByCategory", category);
 			return product;
 		} finally {
 			session.close();

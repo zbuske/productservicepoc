@@ -22,4 +22,12 @@ public class ProductService {
 	public String getById(@QueryParam("id") String id){	
 		return productDao.selectById(Integer.parseInt(id)).toString();
 	}
+	
+	@GET
+	@Path("byCategory")
+	@Produces(MediaType.TEXT_PLAIN)
+	public String getByCategory(@QueryParam("category") String category){	
+		return productDao.selectByCategory(category).toString();
+	}
+
 }
