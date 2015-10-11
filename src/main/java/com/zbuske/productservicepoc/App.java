@@ -14,7 +14,7 @@ public class App {
 
 	private static void setupWebServer() throws Exception, InterruptedException {
 		ServletContextHandler context = new ServletContextHandler(ServletContextHandler.SESSIONS);
-		context.setContextPath("/product");
+		context.setContextPath("/poc");
 
 		Server jettyServer = new Server(8080);
 		jettyServer.setHandler(context);
