@@ -4,8 +4,6 @@ import java.sql.Date;
 
 public class Product {
 	
-	
-	
 	private Integer id;
 	private String sku;
 	private String name;
@@ -22,7 +20,6 @@ public class Product {
 		this.price = price;
 		this.lastUpdated = lastUpdated;
 	}
-
 
 	public Integer getId() {
 		return id;
@@ -69,5 +66,12 @@ public class Product {
 	public void setLastUpdated(Date lastUpdated) {
 		this.lastUpdated = lastUpdated;
 	}
+	
+	@Override
+	public String toString() {
+		return "Product [id=" + id + ", sku=" + sku + ", name=" + name + ", category=" + category + ", price=" + price
+				+ ", lastUpdated=" + lastUpdated + "]";
+	}
+
 
 }

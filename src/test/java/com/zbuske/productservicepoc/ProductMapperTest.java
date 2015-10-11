@@ -4,7 +4,6 @@ import static org.junit.Assert.assertEquals;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.sql.SQLException;
 import java.sql.Date;
 
 import org.apache.ibatis.io.Resources;
@@ -17,7 +16,7 @@ import org.junit.Test;
 
 import com.zbuske.productservicepoc.model.Product;
 
-public class ProductTest {
+public class ProductMapperTest {
 	private SqlSession session;
 	
 
