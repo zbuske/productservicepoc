@@ -31,9 +31,9 @@
 		select *
 		from PRODUCT where
 		id in
-		<foreach item="id" index="index" collection="array" open="("
+		<foreach item="item" index="index" collection="list" open="("
 			separator="," close=")">
-			#{array}
+			#{item}
 		</foreach>
 	</select>
 

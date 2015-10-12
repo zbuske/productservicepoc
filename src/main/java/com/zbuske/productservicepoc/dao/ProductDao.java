@@ -25,6 +25,22 @@ public class ProductDao {
 			session.close();
 		}
 	}
+	
+	@SuppressWarnings("unchecked")
+	public List<Product> selectByIds(List<Integer> productIds) {
+
+		SqlSession session = sqlSessionFactory.openSession();
+
+		try {
+			@SuppressWarnings("rawtypes")
+			List products= (List) session.selectList("ProductMapper.getByIds", productIds);
+			System.out.println(products);
+			return (List<Product>)products;
+		} finally {
+			session.close();
+		}
+	}
+
 
 	public List<Product> selectByCategory(String category) {
 
