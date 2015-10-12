@@ -1,0 +1,22 @@
+README
+
+product-service-poc-0.0.1-SNAPSHOT.jar is an executable jar file. To run the application:
+
+java -jar product-service-poc-0.0.1-SNAPSHOT.jar
+
+This will start the server. You may then access the product information from:
+
+http://localhost:8080/poc/product
+
+The valid urls are 
+
+byId - returns the output of a single product
+byIds - - returns the output of a single product of each id passed in. The ids shold be comma separated
+byCategory - - returns the output of all products in a category
+
+
+Example requests:
+
+http://localhost:8080/poc/product/byId?id=5555
+http://localhost:8080/poc/product/byIds?ids=5555,5543
+http://localhost:8080/poc/product/byCategory?category=toys
