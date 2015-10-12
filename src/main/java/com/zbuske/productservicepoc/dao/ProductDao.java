@@ -25,7 +25,7 @@ public class ProductDao {
 			session.close();
 		}
 	}
-	
+
 	@SuppressWarnings("unchecked")
 	public List<Product> selectByIds(List<Integer> productIds) {
 
@@ -33,14 +33,12 @@ public class ProductDao {
 
 		try {
 			@SuppressWarnings("rawtypes")
-			List products= (List) session.selectList("ProductMapper.getByIds", productIds);
-			System.out.println(products);
-			return (List<Product>)products;
+			List products = (List) session.selectList("ProductMapper.getByIds", productIds);
+			return (List<Product>) products;
 		} finally {
 			session.close();
 		}
 	}
-
 
 	public List<Product> selectByCategory(String category) {
 

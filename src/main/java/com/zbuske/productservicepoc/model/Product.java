@@ -1,16 +1,15 @@
 package com.zbuske.productservicepoc.model;
+
 import java.sql.Date;
 
-
 public class Product {
-	
+
 	private Integer id;
 	private String sku;
 	private String name;
 	private String category;
 	private Double price;
 	private Date lastUpdated;
-	
 
 	public Product(Integer id, String sku, String name, String category, Double price, Date lastUpdated) {
 		this.id = id;
@@ -52,6 +51,7 @@ public class Product {
 	public void setCategory(String category) {
 		this.category = category;
 	}
+
 	public Double getPrice() {
 		return price;
 	}
@@ -59,6 +59,7 @@ public class Product {
 	public void setPrice(Double price) {
 		this.price = price;
 	}
+
 	public Date getLastUpdated() {
 		return lastUpdated;
 	}
@@ -66,12 +67,11 @@ public class Product {
 	public void setLastUpdated(Date lastUpdated) {
 		this.lastUpdated = lastUpdated;
 	}
-	
+
 	@Override
 	public String toString() {
 		return "Product [id=" + id + ", sku=" + sku + ", name=" + name + ", category=" + category + ", price=" + price
 				+ ", lastUpdated=" + lastUpdated + "]";
 	}
-
 
 }

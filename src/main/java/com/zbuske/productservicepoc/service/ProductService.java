@@ -1,6 +1,5 @@
 package com.zbuske.productservicepoc.service;
 
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,10 +10,12 @@ import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 
 import com.zbuske.productservicepoc.dao.ProductDao;
+import com.zbuske.productservicepoc.model.Product;
 
 @Path("/product")
 public class ProductService {
 	private static ProductDao productDao;
+
 	public ProductService() {
 		productDao = new ProductDao();
 	}
@@ -22,41 +23,50 @@ public class ProductService {
 	@GET
 	@Path("byId")
 	@Produces(MediaType.TEXT_PLAIN)
-	public String getById(@QueryParam("id") String id){	
+	public String getById(@QueryParam("id") String id) {
 		Integer intId = null;
-	    try {
-	    	intId = Integer.parseInt(id);
-	    } catch (Exception e) {
-	        return id + "is invlid. id must be numberic ";
-	    }
-		return productDao.selectById(intId).toString();
+		try {
+			intId = Integer.parseInt(id.trim());
+		} catch (Exception e) {
+			return id + " is invlid. id must be numeric ";
+		}
+		Product product = productDao.selectById(intId);
+		if (product != null) {
+			return product.toString();
+		}
+		return "product not found for id " + id;
 	}
-	
+
 	@GET
 	@Path("byIds")
 	@Produces(MediaType.TEXT_PLAIN)
-	public String getByIds(@QueryParam("ids") String ids){	
-		List<Integer>intIds = new ArrayList<Integer>();
+	public String getByIds(@QueryParam("ids") String ids) {
+		List<Integer> intIds = new ArrayList<Integer>();
 		String[] stringIds = ids.split(",");
-		for(int i = 0; i < stringIds.length; i++){
+		for (int i = 0; i < stringIds.length; i++) {
 			try {
-		    intIds.add(Integer.parseInt(stringIds[i]));
-		    } catch (NumberFormatException e) {
-		    	
-		        return stringIds[i] + "is invlid. id must be numberic ";
-		    }
+				intIds.add(Integer.parseInt(stringIds[i].trim()));
+			} catch (NumberFormatException e) {
+
+				return stringIds[i] + " is invlid. id must be numeric ";
+			}
 		}
-		System.out.println("************ ids = " + ids);
-		System.out.println("************ intIds = " + intIds);
-		return productDao.selectByIds(intIds).toString();
+		List<Product> products = productDao.selectByIds(intIds);
+		if (products != null && !products.isEmpty()) {
+			return products.toString();
+		}
+		return "products not found for ids " + ids;
 	}
 
-	
 	@GET
 	@Path("byCategory")
 	@Produces(MediaType.TEXT_PLAIN)
-	public String getByCategory(@QueryParam("category") String category){	
-		return productDao.selectByCategory(category).toString();
+	public String getByCategory(@QueryParam("category") String category) {
+		List<Product> products = productDao.selectByCategory(category);
+		if (products != null && !products.isEmpty()) {
+			return products.toString();
+		}
+		return "product not found for category " + category;
 	}
 
 }

@@ -10,18 +10,15 @@ public class DBBuilder {
 
 	public static void buildSampleDB() throws Exception {
 		productDao = new ProductDao();
-		System.out.println("*********** creating database");
 
 		try {
-			int dropTable = productDao.dropTable();
-			System.out.println("drop table " + dropTable);
+			productDao.dropTable();
 		} catch (Exception ex) {
 			// There is no easy way in Derby to see if a table already exists,
 			// so I'm just dropping it and handling the exception if it doesn't
 			// I obviously wouldn't do this in production code.
 		}
-		int createTable = productDao.createTable();
-		System.out.println("created table " + createTable);
+		productDao.createTable();
 
 		seedData();
 
