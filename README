@@ -6,9 +6,9 @@ java -jar product-service-poc-0.0.1-SNAPSHOT.jar
 
 This will start the server. You may then access the product information from:
 
-http://localhost:8080/poc/product
+http://localhost:8080/poc/product/<request-type>/<request-value>
 
-The valid urls are 
+The valid request-types are 
 
 byId - returns the output of a single product
 byIds - - returns the output of a single product of each id passed in. The ids shold be comma separated
