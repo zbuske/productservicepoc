@@ -1,5 +1,7 @@
 README
 
+To build the project 'mvn clean install' in the productservicepoc directory. 
+This will create a product-service-poc-0.0.1-SNAPSHOT.jar in the target directory.
 product-service-poc-0.0.1-SNAPSHOT.jar is an executable jar file. To run the application:
 
 java -jar product-service-poc-0.0.1-SNAPSHOT.jar
