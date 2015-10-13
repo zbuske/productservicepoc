@@ -17,6 +17,6 @@ byCategory - - returns the output of all products in a category
 
 Example requests:
 
-http://localhost:8080/poc/product/byId?id=5555
-http://localhost:8080/poc/product/byIds?ids=5555,5543
-http://localhost:8080/poc/product/byCategory?category=toys
+http://localhost:8080/poc/product/byId/5555
+http://localhost:8080/poc/product/byIds/5555,5543
+http://localhost:8080/poc/product/byCategory/toys
